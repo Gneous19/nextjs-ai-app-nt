@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import type { ComponentProps } from "react";
-import { LayoutDashboard } from "lucide-react";
+import { LayoutDashboard, Package } from "lucide-react";
 import {
   NavigationMenu,
+  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
@@ -16,7 +18,7 @@ interface NavMenuProps extends ComponentProps<typeof NavigationMenu> {
 }
 
 export const NavMenu = ({ role, ...props }: NavMenuProps) => (
-  <NavigationMenu {...props}>
+  <NavigationMenu viewport={false} {...props}>
     <NavigationMenuList className="data-[orientation=vertical]:-ms-2 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start">
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
@@ -45,12 +47,36 @@ export const NavMenu = ({ role, ...props }: NavMenuProps) => (
       </NavigationMenuItem>
       {role === "admin" && (
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/dashboard">
-              <LayoutDashboard className="size-4 mr-1 inline" />
-              Dashboard
-            </Link>
-          </NavigationMenuLink>
+          <NavigationMenuTrigger>
+            <LayoutDashboard className="size-4 mr-1" />
+            Admin
+          </NavigationMenuTrigger>
+          <NavigationMenuContent className="rounded-xl min-w-[12rem]">
+            <ul className="grid w-full gap-0.5 p-1.5">
+              <li>
+                <NavigationMenuLink
+                  asChild
+                  className="rounded-lg px-3 py-2 text-sm hover:bg-accent"
+                >
+                  <Link href="/dashboard">
+                    <LayoutDashboard className="size-4" />
+                    Dashboard
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink
+                  asChild
+                  className="rounded-lg px-3 py-2 text-sm hover:bg-accent"
+                >
+                  <Link href="/dashboard/products">
+                    <Package className="size-4" />
+                    สินค้า
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
         </NavigationMenuItem>
       )}
     </NavigationMenuList>
