@@ -57,7 +57,7 @@ export default function CartList() {
                รวมทั้งหมด: {totalPrice.toFixed(2)}   
           </div>  
           <div className="m-4">
-            <Button className="mr-4" variant="outline" onClick={() => { clearCart(); } }>ลบสินค้าทั้งหมด</Button> 
+            <Button className="mr-4" variant="ghost" onClick={() => { clearCart(); } }>ลบสินค้าทั้งหมด</Button> 
             <Button onClick={() => { 
                 clearCart();
                 router.replace('/product');

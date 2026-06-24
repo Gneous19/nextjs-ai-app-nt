@@ -12,7 +12,7 @@ import {
 import { Logo } from "@/components/logo";
 import { NavMenu } from "@/components/nav-menu";
 
-export const NavigationSheet = () => {
+export const NavigationSheet = ({ role }: { role?: string }) => {
   return (
     <Sheet>
       <VisuallyHidden>
@@ -20,13 +20,13 @@ export const NavigationSheet = () => {
       </VisuallyHidden>
 
       <SheetTrigger asChild>
-        <Button size="icon" variant="outline">
+        <Button size="icon" variant="ghost">
           <Menu />
         </Button>
       </SheetTrigger>
       <SheetContent className="px-6 py-3">
         <Logo />
-        <NavMenu className="mt-6 [&>div]:h-full" orientation="vertical" />
+        <NavMenu className="mt-6 [&>div]:h-full" orientation="vertical" role={role} />
       </SheetContent>
     </Sheet>
   );

@@ -21,7 +21,7 @@ const Navbar = async () => {
         <Logo />
 
         {/* Desktop Menu */}
-        <NavMenu className="hidden md:block" />
+        <NavMenu className="hidden md:block" role={session?.user?.role} />
 
         <Link href="/cart">
           <Badge className="p-2 text-md">
@@ -34,7 +34,7 @@ const Navbar = async () => {
           {
             !session && (
               <>
-                <Button asChild className="hidden sm:inline-flex" variant="outline">
+                <Button asChild className="hidden sm:inline-flex" variant="ghost">
                   <Link href="/login">เข้าสู่ระบบ</Link>
                 </Button>
                 <Button asChild>
@@ -59,7 +59,7 @@ const Navbar = async () => {
 
           {/* Mobile Menu */}
           <div className="md:hidden">
-            <NavigationSheet />
+            <NavigationSheet role={session?.user?.role} />
           </div>
         </div>
       </div>

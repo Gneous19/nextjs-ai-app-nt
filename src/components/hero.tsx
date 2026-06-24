@@ -26,13 +26,13 @@ export default function Hero() {
           blocks that give you a solid foundation for any UI.
         </p>
         <div className="mt-12 flex items-center justify-center gap-4">
-          <Button className="rounded-full" size="lg">
+          <Button size="lg">
             Get Started <ArrowUpRight className="h-5! w-5!" />
           </Button>
           <Button
-            className="rounded-full shadow-none"
+            className="shadow-none"
             size="lg"
-            variant="outline"
+            variant="ghost"
           >
             <CirclePlay className="h-5! w-5!" /> Watch Demo
           </Button>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { ComponentProps } from "react";
+import { LayoutDashboard } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -10,7 +11,11 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => (
+interface NavMenuProps extends ComponentProps<typeof NavigationMenu> {
+  role?: string;
+}
+
+export const NavMenu = ({ role, ...props }: NavMenuProps) => (
   <NavigationMenu {...props}>
     <NavigationMenuList className="data-[orientation=vertical]:-ms-2 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start">
       <NavigationMenuItem>
@@ -33,6 +38,21 @@ export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => (
           <Link href="/product">สินค้า</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+          <Link href="/contact">ติดต่อเรา</Link>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+      {role === "admin" && (
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+            <Link href="/dashboard">
+              <LayoutDashboard className="size-4 mr-1 inline" />
+              Dashboard
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      )}
     </NavigationMenuList>
   </NavigationMenu>
 );
