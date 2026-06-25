@@ -39,6 +39,7 @@ export async function GET(request: Request) {
         where,
         include: {
           categories: { select: { id: true, name: true } },
+          product_images: { select: { id: true, image_name: true } },
         },
         orderBy: { id: "asc" },
         skip: (page - 1) * pageSize,
@@ -54,6 +55,10 @@ export async function GET(request: Request) {
       price: Number(p.price ?? 0),
       categoryId: p.category_id !== null ? String(p.category_id) : "",
       categoryName: p.categories?.name ?? "ไม่ระบุหมวดหมู่",
+      productImages: p.product_images.map((img) => ({
+        id: img.id,
+        imageName: img.image_name,
+      })),
     }))
 
     return NextResponse.json({
@@ -114,15 +119,21 @@ export async function POST(request: Request) {
 
     const { name, description, price, categoryId } = result.data
 
+    const images: string[] = body.images ?? []
+
     const product = await prisma.products.create({
       data: {
         name,
         description: description || null,
         price,
         category_id: parseInt(categoryId),
+        product_images: {
+          create: images.map((imageName: string) => ({ image_name: imageName })),
+        },
       },
       include: {
         categories: { select: { id: true, name: true } },
+        product_images: { select: { id: true, image_name: true } },
       },
     })
 
@@ -133,6 +144,10 @@ export async function POST(request: Request) {
       price: Number(product.price ?? 0),
       categoryId: product.category_id !== null ? String(product.category_id) : "",
       categoryName: product.categories?.name ?? "ไม่ระบุหมวดหมู่",
+      productImages: product.product_images.map((img) => ({
+        id: img.id,
+        imageName: img.image_name,
+      })),
     }
 
     return NextResponse.json(

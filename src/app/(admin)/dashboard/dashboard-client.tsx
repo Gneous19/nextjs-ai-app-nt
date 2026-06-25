@@ -135,7 +135,7 @@ export function DashboardClient() {
     : []
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="mx-auto max-w-(--breakpoint-xl) px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-2xl font-bold mb-8">Dashboard</h1>
 
       {statsError && (

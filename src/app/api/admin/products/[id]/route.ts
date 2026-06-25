@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
 import { headers } from "next/headers"
+import { unlink } from "fs/promises"
+import { join } from "path"
 import { auth } from "@/lib/auth"
 import prisma from "@/lib/prisma"
 import { productSchema } from "@/lib/validations/product"
@@ -61,6 +63,15 @@ export async function PUT(
 
     const { name, description, price, categoryId } = result.data
 
+    const images: string[] = body.images ?? []
+    const removedImages: number[] = body.removedImages ?? []
+
+    if (removedImages.length > 0) {
+      await prisma.product_images.deleteMany({
+        where: { id: { in: removedImages }, product_id: productId },
+      })
+    }
+
     const product = await prisma.products.update({
       where: { id: productId },
       data: {
@@ -68,9 +79,15 @@ export async function PUT(
         description: description || null,
         price,
         category_id: parseInt(categoryId),
+        ...(images.length > 0 && {
+          product_images: {
+            create: images.map((imageName: string) => ({ image_name: imageName })),
+          },
+        }),
       },
       include: {
         categories: { select: { id: true, name: true } },
+        product_images: { select: { id: true, image_name: true } },
       },
     })
 
@@ -81,6 +98,10 @@ export async function PUT(
       price: Number(product.price ?? 0),
       categoryId: product.category_id !== null ? String(product.category_id) : "",
       categoryName: product.categories?.name ?? "ไม่ระบุหมวดหมู่",
+      productImages: product.product_images.map((img) => ({
+        id: img.id,
+        imageName: img.image_name,
+      })),
     }
 
     return NextResponse.json(
@@ -148,6 +169,22 @@ export async function DELETE(
         } satisfies ApiResponse<never>,
         { status: 409 }
       )
+    }
+
+    const productWithImages = await prisma.products.findUnique({
+      where: { id: productId },
+      select: { product_images: { select: { image_name: true } } },
+    })
+
+    if (productWithImages) {
+      for (const img of productWithImages.product_images) {
+        try {
+          const filePath = join(process.cwd(), "public", "product-image", img.image_name)
+          await unlink(filePath)
+        } catch {
+          // file may not exist on disk
+        }
+      }
     }
 
     await prisma.products.delete({ where: { id: productId } })

@@ -7,10 +7,10 @@ import { Badge } from "@/components/ui/badge"
 
 async function StoreStats() {
   const stats = [
-    { label: "Total Products", value: "2,500+", icon: Package, color: "text-[#FF6B6B]" },
-    { label: "Trusted Customers", value: "15,000+", icon: Smile, color: "text-[#4ECDC4]" },
-    { label: "Completed Orders", value: "50,000+", icon: TrendingUp, color: "text-[#FFE66D]" },
-    { label: "24-Hour Delivery", value: "98%", icon: Zap, color: "text-[#60A5FA]" },
+    { label: "Total Products", value: "2,500+", icon: Package, color: "text-nomad-sand" },
+    { label: "Trusted Customers", value: "15,000+", icon: Smile, color: "text-nomad-ocean" },
+    { label: "Completed Orders", value: "50,000+", icon: TrendingUp, color: "text-nomad-forest" },
+    { label: "24-Hour Delivery", value: "98%", icon: Zap, color: "text-nomad-ocean" },
   ]
 
   return (
@@ -33,25 +33,25 @@ const features = [
     icon: Truck,
     title: "Free Shipping",
     description: "Free delivery nationwide on orders over $25. Fast shipping within 1-3 business days.",
-    color: "bg-[#FF6B6B]/15 text-[#FF6B6B]",
+    color: "bg-primary/15 text-primary",
   },
   {
     icon: Shield,
     title: "Product Warranty",
     description: "Quality guaranteed on every item. 7-day return policy. Not satisfied? Full refund, no questions asked.",
-    color: "bg-[#4ECDC4]/15 text-[#4ECDC4]",
+    color: "bg-secondary/15 text-secondary",
   },
   {
     icon: Star,
     title: "Premium Quality",
     description: "Curated products from top brands. Every item passes rigorous quality checks before shipping.",
-    color: "bg-[#FFE66D]/15 text-[#E6C84D]",
+    color: "bg-nomad-forest-light text-nomad-forest",
   },
   {
     icon: Headphones,
     title: "24/7 Support",
     description: "Our team is ready to help around the clock — via chat, phone, and email.",
-    color: "bg-[#60A5FA]/15 text-[#60A5FA]",
+    color: "bg-secondary/15 text-secondary",
   },
 ]
 
@@ -66,10 +66,10 @@ export default function AboutPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#FFF5F5] to-background">
+      <section className="relative overflow-hidden bg-gradient-to-b from-primary/10 to-background">
         <div className="mx-auto max-w-(--breakpoint-xl) px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
           <Badge variant="filter" className="mb-6">
-            <Star className="size-3 fill-[#FF6B6B]" /> #1 Ecommerce Platform
+            <Star className="size-3 fill-primary" /> #1 Ecommerce Platform
           </Badge>
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6">
             Shopping That Fits<br />

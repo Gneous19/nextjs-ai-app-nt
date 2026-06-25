@@ -51,7 +51,7 @@ export const NavMenu = ({ role, ...props }: NavMenuProps) => (
             <LayoutDashboard className="size-4 mr-1" />
             Admin
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="rounded-xl min-w-[12rem]">
+          <NavigationMenuContent className="rounded-[20px] min-w-[12rem]">
             <ul className="grid w-full gap-0.5 p-1.5">
               <li>
                 <NavigationMenuLink

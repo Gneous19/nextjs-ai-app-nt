@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { toast, Toaster } from "sonner"
 import { RiAddLine, RiPencilLine, RiDeleteBinLine } from "@remixicon/react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Spinner } from "@/components/ui/spinner"
@@ -130,7 +131,7 @@ export function ProductsClient() {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="mx-auto max-w-(--breakpoint-xl) px-4 sm:px-6 lg:px-8 py-8">
       <Toaster richColors position="top-center" />
 
       <div className="flex items-center justify-between mb-6">
@@ -164,6 +165,7 @@ export function ProductsClient() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[80px]">#</TableHead>
+                  <TableHead className="w-[72px]">รูป</TableHead>
                   <TableHead>ชื่อสินค้า</TableHead>
                   <TableHead>หมวดหมู่</TableHead>
                   <TableHead className="text-right">ราคา</TableHead>
@@ -175,6 +177,23 @@ export function ProductsClient() {
                   <TableRow key={product.id}>
                     <TableCell className="font-mono text-xs text-muted-foreground">
                       {product.id}
+                    </TableCell>
+                    <TableCell>
+                      {product.productImages.length > 0 ? (
+                        <div className="relative h-10 w-10 overflow-hidden rounded">
+                          <Image
+                            src={`/product-image/${product.productImages[0].imageName}`}
+                            alt={product.name}
+                            fill
+                            className="object-cover"
+                            sizes="40px"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex h-10 w-10 items-center justify-center rounded bg-muted text-xs text-muted-foreground">
+                          -
+                        </div>
+                      )}
                     </TableCell>
                     <TableCell>
                       <div className="font-medium">{product.name}</div>

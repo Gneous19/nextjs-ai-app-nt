@@ -21,7 +21,7 @@ const Navbar = async () => {
         <Logo />
 
         {/* Desktop Menu */}
-        <NavMenu className="hidden md:block" role={session?.user?.role} />
+        <NavMenu className="hidden md:block" role={session?.user?.role ?? undefined} />
 
         <Link href="/cart">
           <Badge className="p-2 text-md">
@@ -59,7 +59,7 @@ const Navbar = async () => {
 
           {/* Mobile Menu */}
           <div className="md:hidden">
-            <NavigationSheet role={session?.user?.role} />
+            <NavigationSheet role={session?.user?.role ?? undefined} />
           </div>
         </div>
       </div>
