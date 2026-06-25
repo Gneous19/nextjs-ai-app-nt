@@ -1,6 +1,6 @@
 # TypeScript Guidelines (Next.js App Router)
 
-## Core Principles
+## Core Principles 1212312121
 - ใช้ `type` แทน `interface` ตามแนวทางโปรเจกต์
 - เปิด `strict` mode ใน `tsconfig.json`
 - หลีกเลี่ยง `any` ทุกกรณี ใช้ `unknown` หากจำเป็น
