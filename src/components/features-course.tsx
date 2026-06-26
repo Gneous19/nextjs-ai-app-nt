@@ -10,7 +10,7 @@ const FeaturesCourse = ({ courses }: Props) => {
     <div className="flex min-h-screen items-center justify-center px-6 py-20">
       <div className="w-full grow sm:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg)">
         <h2 className="mx-auto text-center font-medium text-4xl tracking-[-0.045em] sm:text-[2.75rem]/[1.2]">
-          หลักสูตรทั้งหมด
+          All Courses
         </h2>
         <p className="mt-3 text-pretty text-center text-lg text-muted-foreground tracking-[-0.01em] sm:text-2xl">
           No complex configs. Just copy, paste, and start building
