@@ -22,27 +22,27 @@ export const NavMenu = ({ role, ...props }: NavMenuProps) => (
     <NavigationMenuList className="data-[orientation=vertical]:-ms-2 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start">
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/">หน้าหลัก</Link>
+          <Link href="/">Home</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/course">หลักสูตร</Link>
+          <Link href="/course">Course</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/about">เกี่ยวกับเรา</Link>
+          <Link href="/about">About</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/product">สินค้า</Link>
+          <Link href="/product">Product</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/contact">ติดต่อเรา</Link>
+          <Link href="/contact">Contact</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
       {role === "admin" && (
@@ -71,7 +71,7 @@ export const NavMenu = ({ role, ...props }: NavMenuProps) => (
                 >
                   <Link href="/dashboard/products">
                     <Package className="size-4" />
-                    สินค้า
+                    Product
                   </Link>
                 </NavigationMenuLink>
               </li>
