@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { connection } from "next/server";
 
 export const metadata: Metadata = {
-  title: "สินค้าทั้งหมด",
+  title: "All Products",
   description: "รายการสินค้าจากฐานข้อมูล eCommerce",
 };
 

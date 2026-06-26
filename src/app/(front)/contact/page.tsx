@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { ContactForm } from "./contact-form"
 
 export const metadata: Metadata = {
-  title: "ติดต่อเรา",
+  title: "Contat us",
   description: "ติดต่อเราผ่านแบบฟอร์ม",
 }
 
